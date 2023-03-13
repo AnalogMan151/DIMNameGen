@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Author: AnalogMan
-# Modified Date: 2023-02-19
+# Modified Date: 2023-03-13
 # Purpose: Generates Bandai Vital Bracelet Name Sprites for DIM modifications
 # Usage: DIMNameGen [-h] [-n name]
 # Requirements: Pillow (pip3 install Pillow)
@@ -97,6 +97,17 @@ def main():
     letters["("] = charsheet.crop((251, 0, 255, 15))
     letters[")"] = charsheet.crop((256, 0, 260, 15))
     
+    letters["1"] = charsheet.crop((261, 0, 264, 15))
+    letters["2"] = charsheet.crop((265, 0, 270, 15))
+    letters["3"] = charsheet.crop((271, 0, 276, 15))
+    letters["4"] = charsheet.crop((277, 0, 281, 15))
+    letters["5"] = charsheet.crop((282, 0, 287, 15))
+    letters["6"] = charsheet.crop((288, 0, 294, 15))
+    letters["7"] = charsheet.crop((295, 0, 300, 15))
+    letters["8"] = charsheet.crop((301, 0, 307, 15))
+    letters["9"] = charsheet.crop((308, 0, 314, 15))
+    letters["0"] = charsheet.crop((315, 0, 321, 15))
+    
     # List of serif letters
     serif = ["A", "M", "S", "V", "W"]
 
@@ -114,7 +125,7 @@ def main():
             letters[elem]
         except:
             print("Could not find letter " + repr(elem) + " in character sheet.")
-            print("Available characters: \"A-Z -:.()\"")
+            print("Available characters: \"A-Z -:.() 0-9\"")
             exit(1)
     
     # Check if official Bandai sprite exists
@@ -123,8 +134,8 @@ def main():
     
     if os.path.isfile(load_file("assets/" + name + ".png")):
         print("String found amoung official Bandai sprites. Using official sprite.")
-        print("Saving file to output\\" + name + ".png")
-        Image.open(load_file("assets\\" + name + ".png")).convert("RGB").save("output/" + name + ".png")
+        print("Saving file to output/" + name + ".png")
+        Image.open(load_file("assets/" + name + ".png")).convert("RGB").save("output/" + name + ".png")
         print("Completed Successfully.")
         exit(0)
             
@@ -207,17 +218,18 @@ def main():
         lmargin = 0
         
     # TODO: Check if right margin is at least 2x. If not, use alternate MON kerning
-    if (text_w + 2 + lmargin) > (canvas_w - 3):
-        if (text_w + 2 + lmargin) == (canvas_w - 1):
-            x = canvas_w - 36
-        else:
-            x = canvas_w - 37
-        namesprite.paste(letters["M"], (x, 0))
-        namesprite.paste(letters[" "], (x+12, 0))
-        namesprite.paste(letters["O"], (x+13, 0))
-        namesprite.paste(letters[" "], (x+23, 0))
-        namesprite.paste(letters["N"], (x+24, 0))
-        namesprite.paste(letters[" "], (x+34, 0))
+    if name[-3::1] == "MON":
+        if (text_w + 2 + lmargin) > (canvas_w - 3):
+            if (text_w + 2 + lmargin) == (canvas_w - 1):
+                x = canvas_w - 36
+            else:
+                x = canvas_w - 37
+            namesprite.paste(letters["M"], (x, 0))
+            namesprite.paste(letters[" "], (x+12, 0))
+            namesprite.paste(letters["O"], (x+13, 0))
+            namesprite.paste(letters[" "], (x+23, 0))
+            namesprite.paste(letters["N"], (x+24, 0))
+            namesprite.paste(letters[" "], (x+34, 0))
        
     # Create new canvas to paste into
     namesprite2 = Image.new("RGB", (canvas_w, 15), green)
@@ -228,8 +240,8 @@ def main():
     print("Creating sprite " + name + ", width: " + str(canvas_w) + "px")
     
     # Save result to output folder       
-    print("Saving file to output\\" + cleanFilename(name) + ".png")
-    namesprite2.save("output\\" + cleanFilename(name) + ".png")
+    print("Saving file to output/" + cleanFilename(name) + ".png")
+    namesprite2.save("output/" + cleanFilename(name) + ".png")
 
     print("Completed Successfully.")
 
