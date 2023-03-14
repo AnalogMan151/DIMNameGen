@@ -100,13 +100,13 @@ def main():
     letters["1"] = charsheet.crop((261, 0, 264, 15))
     letters["2"] = charsheet.crop((265, 0, 270, 15))
     letters["3"] = charsheet.crop((271, 0, 276, 15))
-    letters["4"] = charsheet.crop((277, 0, 281, 15))
-    letters["5"] = charsheet.crop((282, 0, 287, 15))
-    letters["6"] = charsheet.crop((288, 0, 294, 15))
-    letters["7"] = charsheet.crop((295, 0, 300, 15))
-    letters["8"] = charsheet.crop((301, 0, 307, 15))
-    letters["9"] = charsheet.crop((308, 0, 314, 15))
-    letters["0"] = charsheet.crop((315, 0, 321, 15))
+    letters["4"] = charsheet.crop((277, 0, 283, 15))
+    letters["5"] = charsheet.crop((284, 0, 289, 15))
+    letters["6"] = charsheet.crop((290, 0, 296, 15))
+    letters["7"] = charsheet.crop((297, 0, 302, 15))
+    letters["8"] = charsheet.crop((303, 0, 309, 15))
+    letters["9"] = charsheet.crop((310, 0, 316, 15))
+    letters["0"] = charsheet.crop((317, 0, 323, 15))
     
     # List of serif letters
     serif = ["A", "M", "S", "V", "W"]
