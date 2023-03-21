@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Author: AnalogMan
-# Modified Date: 2023-03-13
+# Modified Date: 2023-03-21
 # Purpose: Generates Bandai Vital Bracelet Name Sprites for DIM modifications
 # Usage: DIMNameGen [-h] [-n name]
 # Requirements: Pillow (pip3 install Pillow)
@@ -55,7 +55,7 @@ def main():
 
     # Attempt to open alphabet sprite sheet and complain if cannot
     try:
-        charsheet = Image.open(load_file("assets/VB_Alphabet_ENG.png"))
+        charsheet = Image.open(load_file("assets/VB_Alphabet_ENG.png")).convert("RGB")
     except:
         print("Font Sprite Sheet missing: VB_Alphabet_ENG.png")
         exit(1)
